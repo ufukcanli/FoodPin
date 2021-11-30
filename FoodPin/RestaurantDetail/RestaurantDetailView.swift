@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct RestaurantDetailView: View {
+    @State private var currentRating: Restaurant.Rating? = nil
     @State private var showReview = false
     var restaurant: Restaurant
     
@@ -20,6 +21,20 @@ struct RestaurantDetailView: View {
                     .overlay(
                         VStack(alignment: .leading) {
                             HStack(alignment: .top) {
+                                if let currentRating = currentRating {
+                                    Image(currentRating.image)
+                                        .resizable()
+                                        .frame(width: 60, height: 60)
+                                        .padding([.leading, .top])
+                                        .transition(.scale)
+                                } else if let rating = restaurant.rating {
+                                    Image(rating.image)
+                                        .resizable()
+                                        .frame(width: 60, height: 60)
+                                        .padding([.leading, .top])
+                                        .transition(.scale)
+                                }
+                                
                                 Spacer()
                                 
                                 Image(systemName: restaurant.isFavorite ? "heart.fill": "heart")
@@ -88,7 +103,7 @@ struct RestaurantDetailView: View {
                 .clipShape(RoundedRectangle(cornerRadius: 20))
                 .padding([.horizontal, .bottom])
                 .fullScreenCover(isPresented: $showReview) {
-                    ReviewView(restaurant: restaurant)
+                    ReviewView(currentRating: $currentRating, restaurant: restaurant)
                 }
             }
         }

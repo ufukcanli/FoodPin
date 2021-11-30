@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ReviewView: View {
     @Environment(\.presentationMode) var presentationMode
+    @Binding var currentRating: Restaurant.Rating?
     @State private var showRatings = false
     var restaurant: Restaurant
     
@@ -47,6 +48,11 @@ struct ReviewView: View {
                     .opacity(showRatings ? 1.0 : 0)
                     .offset(x: showRatings ? 0 : 1000)
                     .animation(.easeOut.delay(Double(Restaurant.Rating.allCases.firstIndex(of: rating)!) * 0.05), value: showRatings)
+                    .onTapGesture {
+                        currentRating = rating
+                        restaurant.rating = currentRating
+                        presentationMode.wrappedValue.dismiss()
+                    }
                 }
             }
         }
@@ -59,6 +65,7 @@ struct ReviewView: View {
 struct ReviewView_Previews: PreviewProvider {
     static var previews: some View {
         ReviewView(
+            currentRating: .constant(.none),
             restaurant: Restaurant(
                 name: "N/A",
                 type: "N/A",
