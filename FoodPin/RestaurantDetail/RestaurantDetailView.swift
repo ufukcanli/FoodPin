@@ -60,8 +60,8 @@ struct RestaurantDetailView: View {
                         }
                     )
                                 
-                //                Text(restaurant.description)
-                //                    .padding()
+                Text(restaurant.description)
+                    .padding()
                 
                 HStack(alignment: .top) {
                     VStack(alignment: .leading) {
@@ -76,7 +76,7 @@ struct RestaurantDetailView: View {
                         Text("PHONE")
                             .font(.system(.headline, design: .rounded))
                         
-                        //                        Text(restaurant.phone)
+                        Text(restaurant.phone)
                     }
                     .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
                 }
@@ -118,8 +118,9 @@ struct RestaurantDetailView_Previews: PreviewProvider {
                 name: "N/A",
                 type: "N/A",
                 location: "N/A",
-                image: "N/A",
-                isFavorite: false
+                phone: "N/A",
+                description: "N/A",
+                image: "N/A"
             )
         )
     }

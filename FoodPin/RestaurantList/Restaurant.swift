@@ -12,8 +12,8 @@ class Restaurant: ObservableObject, Identifiable {
     @Published var name: String
     @Published var type: String
     @Published var location: String
-//    @Published var phone: String
-//    @Published var description: String
+    @Published var phone: String
+    @Published var description: String
     @Published var image: String
     @Published var isFavorite: Bool
     @Published var rating: Rating?
@@ -22,8 +22,8 @@ class Restaurant: ObservableObject, Identifiable {
         name: String,
         type: String,
         location: String,
-//        phone: String,
-//        description: String,
+        phone: String,
+        description: String,
         image: String,
         isFavorite: Bool = false,
         rating: Rating? = nil
@@ -31,8 +31,8 @@ class Restaurant: ObservableObject, Identifiable {
             self.name = name
             self.type = type
             self.location = location
-//            self.phone = phone
-//            self.description = description
+            self.phone = phone
+            self.description = description
             self.image = image
             self.isFavorite = isFavorite
             self.rating = rating

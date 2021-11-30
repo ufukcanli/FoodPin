@@ -125,15 +125,21 @@ struct BasicTextImageRow: View {
                 Text(type)
                     .font(.system(.body, design: .rounded))
                 
-                Text(location)
-                    .font(.system(.subheadline, design: .rounded))
-                    .foregroundColor(.gray)
+//                Text(location)
+//                    .font(.system(.subheadline, design: .rounded))
+//                    .foregroundColor(.gray)
                 
                 if isFavorite {
                     Spacer()
                     
                     Image(systemName: "heart.fill")
                         .foregroundColor(.yellow)
+                    
+                    Spacer()
+                } else {
+                    Spacer()
+                    
+                    Image(systemName: "heart")
                     
                     Spacer()
                 }

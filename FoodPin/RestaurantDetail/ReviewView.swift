@@ -70,8 +70,9 @@ struct ReviewView_Previews: PreviewProvider {
                 name: "N/A",
                 type: "N/A",
                 location: "N/A",
-                image: "N/A",
-                isFavorite: false
+                phone: "N/A",
+                description: "N/A",
+                image: "N/A"
             )
         )
     }
