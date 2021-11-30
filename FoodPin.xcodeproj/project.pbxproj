@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D28867FE27560F0B00A94124 /* RestaurantListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28867FD27560F0B00A94124 /* RestaurantListViewModel.swift */; };
 		D2B719D8275607150069A1AE /* FoodPinApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B719D7275607150069A1AE /* FoodPinApp.swift */; };
 		D2B719DA275607150069A1AE /* RestaurantListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B719D9275607150069A1AE /* RestaurantListView.swift */; };
 		D2B719DC275607190069A1AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2B719DB275607190069A1AE /* Assets.xcassets */; };
@@ -14,6 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D28867FD27560F0B00A94124 /* RestaurantListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantListViewModel.swift; sourceTree = "<group>"; };
 		D2B719D4275607150069A1AE /* FoodPin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodPin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2B719D7275607150069A1AE /* FoodPinApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodPinApp.swift; sourceTree = "<group>"; };
 		D2B719D9275607150069A1AE /* RestaurantListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantListView.swift; sourceTree = "<group>"; };
@@ -33,6 +35,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D28867FC27560EE500A94124 /* RestaurantList */ = {
+			isa = PBXGroup;
+			children = (
+				D28867FD27560F0B00A94124 /* RestaurantListViewModel.swift */,
+				D2B719D9275607150069A1AE /* RestaurantListView.swift */,
+			);
+			path = RestaurantList;
+			sourceTree = "<group>";
+		};
 		D2B719CB275607150069A1AE = {
 			isa = PBXGroup;
 			children = (
@@ -53,7 +64,7 @@
 			isa = PBXGroup;
 			children = (
 				D2B719D7275607150069A1AE /* FoodPinApp.swift */,
-				D2B719D9275607150069A1AE /* RestaurantListView.swift */,
+				D28867FC27560EE500A94124 /* RestaurantList */,
 				D2B719DB275607190069A1AE /* Assets.xcassets */,
 				D2B719E0275607190069A1AE /* Info.plist */,
 				D2B719DD275607190069A1AE /* Preview Content */,
@@ -139,6 +150,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2B719DA275607150069A1AE /* RestaurantListView.swift in Sources */,
+				D28867FE27560F0B00A94124 /* RestaurantListViewModel.swift in Sources */,
 				D2B719D8275607150069A1AE /* FoodPinApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
