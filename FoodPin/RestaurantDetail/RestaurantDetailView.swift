@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct RestaurantDetailView: View {
+    @State private var showReview = false
     var restaurant: Restaurant
     
     var body: some View {
@@ -72,6 +73,22 @@ struct RestaurantDetailView: View {
                         .frame(height: 200)
                         .cornerRadius(20)
                         .padding()
+                }
+                
+                Button {
+                    showReview.toggle()
+                } label: {
+                    Text("Rate it")
+                        .font(.system(size: 25.0, design: .rounded))
+                        .frame(minWidth: 0, maxWidth: .infinity)
+                        .foregroundColor(.white)
+                }
+                .frame(height: 50)
+                .background(Color("NavigationBarTitle"))
+                .clipShape(RoundedRectangle(cornerRadius: 20))
+                .padding([.horizontal, .bottom])
+                .fullScreenCover(isPresented: $showReview) {
+                    ReviewView(restaurant: restaurant)
                 }
             }
         }
