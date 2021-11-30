@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D2B719D8275607150069A1AE /* FoodPinApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B719D7275607150069A1AE /* FoodPinApp.swift */; };
-		D2B719DA275607150069A1AE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B719D9275607150069A1AE /* ContentView.swift */; };
+		D2B719DA275607150069A1AE /* RestaurantListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B719D9275607150069A1AE /* RestaurantListView.swift */; };
 		D2B719DC275607190069A1AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2B719DB275607190069A1AE /* Assets.xcassets */; };
 		D2B719DF275607190069A1AE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2B719DE275607190069A1AE /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -16,7 +16,7 @@
 /* Begin PBXFileReference section */
 		D2B719D4275607150069A1AE /* FoodPin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodPin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2B719D7275607150069A1AE /* FoodPinApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodPinApp.swift; sourceTree = "<group>"; };
-		D2B719D9275607150069A1AE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		D2B719D9275607150069A1AE /* RestaurantListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantListView.swift; sourceTree = "<group>"; };
 		D2B719DB275607190069A1AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D2B719DE275607190069A1AE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D2B719E0275607190069A1AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -53,7 +53,7 @@
 			isa = PBXGroup;
 			children = (
 				D2B719D7275607150069A1AE /* FoodPinApp.swift */,
-				D2B719D9275607150069A1AE /* ContentView.swift */,
+				D2B719D9275607150069A1AE /* RestaurantListView.swift */,
 				D2B719DB275607190069A1AE /* Assets.xcassets */,
 				D2B719E0275607190069A1AE /* Info.plist */,
 				D2B719DD275607190069A1AE /* Preview Content */,
@@ -138,7 +138,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D2B719DA275607150069A1AE /* ContentView.swift in Sources */,
+				D2B719DA275607150069A1AE /* RestaurantListView.swift in Sources */,
 				D2B719D8275607150069A1AE /* FoodPinApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -280,7 +280,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ufukcanli.FoodPin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -302,7 +302,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ufukcanli.FoodPin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
