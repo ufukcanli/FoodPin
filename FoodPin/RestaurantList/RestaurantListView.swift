@@ -12,14 +12,16 @@ struct RestaurantListView: View {
     
     var body: some View {
         List {
-            ForEach(viewModel.restaurantNames.indices, id: \.self) { index in
+            ForEach(viewModel.restaurants) { restaurant in
                 BasicTextImageRow(
-                    name: viewModel.restaurantNames[index],
-                    type: viewModel.restaurantTypes[index],
-                    location: viewModel.restaurantLocations[index]
+                    name: restaurant.name,
+                    type: restaurant.type,
+                    location: restaurant.location,
+                    isFavorite: restaurant.isFavorite
                 )
                 .onTapGesture {
                     viewModel.showOptions.toggle()
+                    viewModel.currentRestaurant = restaurant
                 }
                 .actionSheet(isPresented: $viewModel.showOptions) {
                     ActionSheet(
@@ -30,7 +32,7 @@ struct RestaurantListView: View {
                                 viewModel.showError.toggle()
                             },
                             .default(Text("Mark as favorite")) {
-                                
+                                viewModel.markFavorite()
                             },
                             .cancel()
                         ]
@@ -60,6 +62,7 @@ struct BasicTextImageRow: View {
     var name: String
     var type: String
     var location: String
+    var isFavorite: Bool
     
     var body: some View {
         HStack(alignment: .top, spacing: 20) {
@@ -78,6 +81,15 @@ struct BasicTextImageRow: View {
                 Text(location)
                     .font(.system(.subheadline, design: .rounded))
                     .foregroundColor(.gray)
+                
+                if isFavorite {
+                    Spacer()
+                    
+                    Image(systemName: "heart.fill")
+                        .foregroundColor(.yellow)
+                    
+                    Spacer()
+                }
             }
         }
     }
