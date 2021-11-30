@@ -16,24 +16,12 @@ struct RestaurantListView: View {
     var body: some View {
         List {
             ForEach(restaurantNames.indices, id: \.self) { index in
-                HStack(alignment: .top, spacing: 20) {
-                    Image("restaurant")
-                        .resizable()
-                        .frame(width: 120, height: 118)
-                        .clipShape(RoundedRectangle(cornerRadius: 20))
-                    
-                    VStack(alignment: .leading) {
-                        Text(restaurantNames[index])
-                            .font(.system(.title2, design: .rounded))
-                        
-                        Text(restaurantTypes[index])
-                            .font(.system(.body, design: .rounded))
-                        
-                        Text(restaurantLocations[index])
-                            .font(.system(.subheadline, design: .rounded))
-                            .foregroundColor(.gray)
-                    }
-                }
+//                BasicTextImageRow(name: restaurantNames[index],
+//                                  type: restaurantTypes[index],
+//                                  location: restaurantLocations[index])
+                FullTextImageRow(name: restaurantNames[index],
+                                  type: restaurantTypes[index],
+                                  location: restaurantLocations[index])
             }
         }
     }
@@ -42,5 +30,62 @@ struct RestaurantListView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         RestaurantListView()
+    }
+}
+
+struct BasicTextImageRow: View {
+    var imageName: String = "restaurant"
+    var name: String
+    var type: String
+    var location: String
+    
+    var body: some View {
+        HStack(alignment: .top, spacing: 20) {
+            Image(imageName)
+                .resizable()
+                .frame(width: 120, height: 118)
+                .clipShape(RoundedRectangle(cornerRadius: 20))
+            
+            VStack(alignment: .leading) {
+                Text(name)
+                    .font(.system(.title2, design: .rounded))
+                
+                Text(type)
+                    .font(.system(.body, design: .rounded))
+                
+                Text(location)
+                    .font(.system(.subheadline, design: .rounded))
+                    .foregroundColor(.gray)
+            }
+        }
+    }
+}
+
+struct FullTextImageRow: View {
+    var imageName: String = "restaurant"
+    var name: String
+    var type: String
+    var location: String
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            Image(imageName)
+                .resizable()
+                .frame(height: 200)
+                .cornerRadius(20)
+            
+            VStack(alignment: .leading) {
+                Text(name)
+                    .font(.system(.title2, design: .rounded))
+                
+                Text(type)
+                    .font(.system(.body, design: .rounded))
+                
+                Text(location)
+                    .font(.system(.subheadline, design: .rounded))
+                    .foregroundColor(.gray)
+            }
+            .padding([.horizontal, .bottom])
+        }
     }
 }
