@@ -119,6 +119,8 @@ struct BasicTextImageRow: View {
                 .clipShape(RoundedRectangle(cornerRadius: 20))
             
             VStack(alignment: .leading) {
+                Spacer()
+                
                 Text(name)
                     .font(.system(.title2, design: .rounded))
                 
@@ -129,20 +131,16 @@ struct BasicTextImageRow: View {
 //                    .font(.system(.subheadline, design: .rounded))
 //                    .foregroundColor(.gray)
                 
+                Spacer()
+                
                 if isFavorite {
-                    Spacer()
-                    
                     Image(systemName: "heart.fill")
                         .foregroundColor(.yellow)
-                    
-                    Spacer()
                 } else {
-                    Spacer()
-                    
                     Image(systemName: "heart")
-                    
-                    Spacer()
                 }
+                
+                Spacer()
             }
         }
     }
