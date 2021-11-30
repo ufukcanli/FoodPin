@@ -19,6 +19,27 @@ struct RestaurantListView: View {
                     location: restaurant.location,
                     isFavorite: restaurant.isFavorite
                 )
+                // TODO: Swipe actions iOS15
+                .contextMenu {
+                    Button {
+                        viewModel.showError.toggle()
+                    } label: {
+                        HStack {
+                            Text("Reserve a table")
+                            Image(systemName: "phone")
+                        }
+                    }
+                    
+                    Button {
+                        viewModel.currentRestaurant = restaurant
+                        viewModel.markFavorite()
+                    } label: {
+                        HStack {
+                            Text(restaurant.isFavorite ? "Remove from favorites" : "Mark as favorite")
+                            Image(systemName: restaurant.isFavorite ? "heart.fill" : "heart")
+                        }
+                    }
+                }
                 .onTapGesture {
                     viewModel.showOptions.toggle()
                     viewModel.currentRestaurant = restaurant
@@ -31,7 +52,7 @@ struct RestaurantListView: View {
                             .default(Text("Reserve a table")) {
                                 viewModel.showError.toggle()
                             },
-                            .default(Text("Mark as favorite")) {
+                            .default(Text(restaurant.isFavorite ? "Remove from favorites" : "Mark as favorite")) {
                                 viewModel.markFavorite()
                             },
                             .cancel()
@@ -46,6 +67,9 @@ struct RestaurantListView: View {
                         secondaryButton: .cancel()
                     )
                 }
+            }
+            .onDelete { indexSet in
+                viewModel.restaurants.remove(atOffsets: indexSet)
             }
         }
     }
