@@ -13,9 +13,29 @@ struct RestaurantListView: View {
     var body: some View {
         List {
             ForEach(viewModel.restaurantNames.indices, id: \.self) { index in
-                BasicTextImageRow(name: viewModel.restaurantNames[index],
-                                  type: viewModel.restaurantTypes[index],
-                                  location: viewModel.restaurantLocations[index])
+                BasicTextImageRow(
+                    name: viewModel.restaurantNames[index],
+                    type: viewModel.restaurantTypes[index],
+                    location: viewModel.restaurantLocations[index]
+                )
+                .onTapGesture {
+                    viewModel.showOptions.toggle()
+                }
+                .actionSheet(isPresented: $viewModel.showOptions) {
+                    ActionSheet(
+                        title: Text("What do you want to do?"),
+                        message: nil,
+                        buttons: [
+                            .default(Text("Reserve a table")) {
+                                
+                            },
+                            .default(Text("Mark as favorite")) {
+                                
+                            },
+                            .cancel()
+                        ]
+                    )
+                }
             }
         }
     }
@@ -27,7 +47,7 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
-struct BasicTextImageRow: View {    
+struct BasicTextImageRow: View {
     var imageName: String = "restaurant"
     var name: String
     var type: String
