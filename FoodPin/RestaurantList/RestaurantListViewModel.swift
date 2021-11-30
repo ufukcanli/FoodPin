@@ -35,6 +35,7 @@ final class RestaurantListViewModel: ObservableObject {
     @Published var currentRestaurant: Restaurant? = nil
     @Published var showOptions = false
     @Published var showError = false
+    @Published var showShare = false
     
     func markFavorite() {
         restaurants = restaurants.map { immutableRestaurant in

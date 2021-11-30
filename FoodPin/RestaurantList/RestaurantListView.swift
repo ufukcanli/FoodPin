@@ -39,6 +39,16 @@ struct RestaurantListView: View {
                             Image(systemName: restaurant.isFavorite ? "heart.fill" : "heart")
                         }
                     }
+                    
+                    Button {
+                        viewModel.currentRestaurant = restaurant
+                        viewModel.showShare.toggle()
+                    } label: {
+                        HStack {
+                            Text("Share this restaurant")
+                            Image(systemName: "square.and.arrow.up")
+                        }
+                    }
                 }
                 .onTapGesture {
                     viewModel.showOptions.toggle()
@@ -66,6 +76,14 @@ struct RestaurantListView: View {
                         primaryButton: .default(Text("OK")),
                         secondaryButton: .cancel()
                     )
+                }
+                .sheet(isPresented: $viewModel.showShare) {
+                    let defaultText = "Just checking in at \(restaurant.name)"
+                    if let imageToShare = UIImage(named: restaurant.image) {
+                        ActivityView(activityItems: [defaultText, imageToShare])
+                    } else {
+                        ActivityView(activityItems: [defaultText])
+                    }
                 }
             }
             .onDelete { indexSet in
