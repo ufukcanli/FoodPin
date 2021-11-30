@@ -33,7 +33,7 @@ final class RestaurantListViewModel: ObservableObject {
         Restaurant(name: "CASK Pub and Kitchen", type: "Thai", location: "London", image: "cask", isFavorite: false)
     ]
     @Published var currentRestaurant: Restaurant? = nil
-    @Published var showOptions = false
+//    @Published var showOptions = false
     @Published var showError = false
     @Published var showShare = false
     

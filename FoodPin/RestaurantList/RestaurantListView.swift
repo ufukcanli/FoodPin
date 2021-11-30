@@ -14,76 +14,78 @@ struct RestaurantListView: View {
         NavigationView {
             List {
                 ForEach(viewModel.restaurants) { restaurant in
-                    BasicTextImageRow(
-                        name: restaurant.name,
-                        type: restaurant.type,
-                        location: restaurant.location,
-                        isFavorite: restaurant.isFavorite
-                    )
-                    // TODO: Swipe actions iOS15
-                    .contextMenu {
-                        Button {
-                            viewModel.showError.toggle()
-                        } label: {
-                            HStack {
-                                Text("Reserve a table")
-                                Image(systemName: "phone")
-                            }
-                        }
-                        
-                        Button {
-                            viewModel.currentRestaurant = restaurant
-                            viewModel.markFavorite()
-                        } label: {
-                            HStack {
-                                Text(viewModel.currentRestaurant?.isFavorite == true ? "Remove from favorites" : "Mark as favorite")
-                                Image(systemName: viewModel.currentRestaurant?.isFavorite == true ? "heart.fill" : "heart")
-                            }
-                        }
-                        
-                        Button {
-                            viewModel.currentRestaurant = restaurant
-                            viewModel.showShare.toggle()
-                        } label: {
-                            HStack {
-                                Text("Share this restaurant")
-                                Image(systemName: "square.and.arrow.up")
-                            }
-                        }
-                    }
-                    .onTapGesture {
-                        viewModel.showOptions.toggle()
-                        viewModel.currentRestaurant = restaurant
-                    }
-                    .actionSheet(isPresented: $viewModel.showOptions) {
-                        ActionSheet(
-                            title: Text("What do you want to do?"),
-                            message: nil,
-                            buttons: [
-                                .default(Text("Reserve a table")) {
-                                    viewModel.showError.toggle()
-                                },
-                                .default(Text(viewModel.currentRestaurant?.isFavorite == true ? "Remove from favorites" : "Mark as favorite")) {
-                                    viewModel.markFavorite()
-                                },
-                                .cancel()
-                            ]
+                    NavigationLink(destination: RestaurantDetailView(restaurant: restaurant)) {
+                        BasicTextImageRow(
+                            name: restaurant.name,
+                            type: restaurant.type,
+                            location: restaurant.location,
+                            isFavorite: restaurant.isFavorite
                         )
-                    }
-                    .alert(isPresented: $viewModel.showError) {
-                        Alert(
-                            title: Text("Not yet available"),
-                            message: Text("Sorry, this feature is not available yet. Please try again later."),
-                            primaryButton: .default(Text("OK")),
-                            secondaryButton: .cancel()
-                        )
-                    }
-                    .sheet(isPresented: $viewModel.showShare) {
-                        let defaultText = "Just checking in at \(restaurant.name)"
-                        if let imageToShare = UIImage(named: restaurant.image) {
-                            ActivityView(activityItems: [defaultText, imageToShare])
-                        } else {
-                            ActivityView(activityItems: [defaultText])
+                        // TODO: Swipe actions iOS15
+                        .contextMenu {
+                            Button {
+                                viewModel.showError.toggle()
+                            } label: {
+                                HStack {
+                                    Text("Reserve a table")
+                                    Image(systemName: "phone")
+                                }
+                            }
+                            
+                            Button {
+                                viewModel.currentRestaurant = restaurant
+                                viewModel.markFavorite()
+                            } label: {
+                                HStack {
+                                    Text(restaurant.isFavorite ? "Remove from favorites" : "Mark as favorite")
+                                    Image(systemName: restaurant.isFavorite ? "heart.fill" : "heart")
+                                }
+                            }
+                            
+                            Button {
+                                viewModel.currentRestaurant = restaurant
+                                viewModel.showShare.toggle()
+                            } label: {
+                                HStack {
+                                    Text("Share this restaurant")
+                                    Image(systemName: "square.and.arrow.up")
+                                }
+                            }
+                        }
+//                        .onTapGesture {
+//                            viewModel.showOptions.toggle()
+//                            viewModel.currentRestaurant = restaurant
+//                        }
+    //                    .actionSheet(isPresented: $viewModel.showOptions) {
+    //                        ActionSheet(
+    //                            title: Text("What do you want to do?"),
+    //                            message: nil,
+    //                            buttons: [
+    //                                .default(Text("Reserve a table")) {
+    //                                    viewModel.showError.toggle()
+    //                                },
+    //                                .default(Text(viewModel.currentRestaurant?.isFavorite == true ? "Remove from favorites" : "Mark as favorite")) {
+    //                                    viewModel.markFavorite()
+    //                                },
+    //                                .cancel()
+    //                            ]
+    //                        )
+    //                    }
+                        .alert(isPresented: $viewModel.showError) {
+                            Alert(
+                                title: Text("Not yet available"),
+                                message: Text("Sorry, this feature is not available yet. Please try again later."),
+                                primaryButton: .default(Text("OK")),
+                                secondaryButton: .cancel()
+                            )
+                        }
+                        .sheet(isPresented: $viewModel.showShare) {
+                            let defaultText = "Just checking in at \(String(describing: viewModel.currentRestaurant?.name))"
+                            if let imageToShare = UIImage(named: viewModel.currentRestaurant?.image ?? "restaurant") {
+                                ActivityView(activityItems: [defaultText, imageToShare])
+                            } else {
+                                ActivityView(activityItems: [defaultText])
+                            }
                         }
                     }
                 }
@@ -140,32 +142,32 @@ struct BasicTextImageRow: View {
     }
 }
 
-struct FullTextImageRow: View {
-    var imageName: String = "restaurant"
-    var name: String
-    var type: String
-    var location: String
-    
-    var body: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            Image(imageName)
-                .resizable()
-                .scaledToFill()
-                .frame(height: 200)
-                .cornerRadius(20)
-            
-            VStack(alignment: .leading) {
-                Text(name)
-                    .font(.system(.title2, design: .rounded))
-                
-                Text(type)
-                    .font(.system(.body, design: .rounded))
-                
-                Text(location)
-                    .font(.system(.subheadline, design: .rounded))
-                    .foregroundColor(.gray)
-            }
-            .padding([.horizontal, .bottom])
-        }
-    }
-}
+//struct FullTextImageRow: View {
+//    var imageName: String = "restaurant"
+//    var name: String
+//    var type: String
+//    var location: String
+//
+//    var body: some View {
+//        VStack(alignment: .leading, spacing: 10) {
+//            Image(imageName)
+//                .resizable()
+//                .scaledToFill()
+//                .frame(height: 200)
+//                .cornerRadius(20)
+//
+//            VStack(alignment: .leading) {
+//                Text(name)
+//                    .font(.system(.title2, design: .rounded))
+//
+//                Text(type)
+//                    .font(.system(.body, design: .rounded))
+//
+//                Text(location)
+//                    .font(.system(.subheadline, design: .rounded))
+//                    .foregroundColor(.gray)
+//            }
+//            .padding([.horizontal, .bottom])
+//        }
+//    }
+//}
