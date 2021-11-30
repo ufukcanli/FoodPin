@@ -12,6 +12,8 @@
 		D288680327562FE800A94124 /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D288680227562FE800A94124 /* ActivityView.swift */; };
 		D28868052756348D00A94124 /* RestaurantDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28868042756348D00A94124 /* RestaurantDetailView.swift */; };
 		D28868092756432800A94124 /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28868082756432800A94124 /* UIColor+Ext.swift */; };
+		D288680C275656AE00A94124 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D288680B275656AE00A94124 /* MapView.swift */; };
+		D288680E27565C7600A94124 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D288680D27565C7600A94124 /* MapViewModel.swift */; };
 		D2B719D8275607150069A1AE /* FoodPinApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B719D7275607150069A1AE /* FoodPinApp.swift */; };
 		D2B719DA275607150069A1AE /* RestaurantListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B719D9275607150069A1AE /* RestaurantListView.swift */; };
 		D2B719DC275607190069A1AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2B719DB275607190069A1AE /* Assets.xcassets */; };
@@ -24,6 +26,8 @@
 		D288680227562FE800A94124 /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
 		D28868042756348D00A94124 /* RestaurantDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDetailView.swift; sourceTree = "<group>"; };
 		D28868082756432800A94124 /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
+		D288680B275656AE00A94124 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		D288680D27565C7600A94124 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		D2B719D4275607150069A1AE /* FoodPin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodPin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2B719D7275607150069A1AE /* FoodPinApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodPinApp.swift; sourceTree = "<group>"; };
 		D2B719D9275607150069A1AE /* RestaurantListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantListView.swift; sourceTree = "<group>"; };
@@ -48,7 +52,6 @@
 			children = (
 				D28867FD27560F0B00A94124 /* RestaurantListViewModel.swift */,
 				D2B719D9275607150069A1AE /* RestaurantListView.swift */,
-				D28868042756348D00A94124 /* RestaurantDetailView.swift */,
 				D28867FF275616F500A94124 /* Restaurant.swift */,
 			);
 			path = RestaurantList;
@@ -78,6 +81,16 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		D288680A2756565A00A94124 /* RestaurantDetail */ = {
+			isa = PBXGroup;
+			children = (
+				D28868042756348D00A94124 /* RestaurantDetailView.swift */,
+				D288680D27565C7600A94124 /* MapViewModel.swift */,
+				D288680B275656AE00A94124 /* MapView.swift */,
+			);
+			path = RestaurantDetail;
+			sourceTree = "<group>";
+		};
 		D2B719CB275607150069A1AE = {
 			isa = PBXGroup;
 			children = (
@@ -99,6 +112,7 @@
 			children = (
 				D2B719D7275607150069A1AE /* FoodPinApp.swift */,
 				D28867FC27560EE500A94124 /* RestaurantList */,
+				D288680A2756565A00A94124 /* RestaurantDetail */,
 				D288680127562FC700A94124 /* Components */,
 				D2886806275642F300A94124 /* Utilities */,
 				D2B719DB275607190069A1AE /* Assets.xcassets */,
@@ -186,12 +200,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				D28868092756432800A94124 /* UIColor+Ext.swift in Sources */,
+				D288680C275656AE00A94124 /* MapView.swift in Sources */,
 				D2886800275616F500A94124 /* Restaurant.swift in Sources */,
 				D2B719DA275607150069A1AE /* RestaurantListView.swift in Sources */,
 				D28868052756348D00A94124 /* RestaurantDetailView.swift in Sources */,
 				D28867FE27560F0B00A94124 /* RestaurantListViewModel.swift in Sources */,
 				D288680327562FE800A94124 /* ActivityView.swift in Sources */,
 				D2B719D8275607150069A1AE /* FoodPinApp.swift in Sources */,
+				D288680E27565C7600A94124 /* MapViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

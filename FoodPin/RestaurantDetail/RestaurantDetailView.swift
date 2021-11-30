@@ -29,6 +29,12 @@ struct RestaurantDetailView: View {
                         Text(restaurant.name)
                         Text(restaurant.type)
                         Text(restaurant.location)
+                        
+                        MapView(viewModel: MapViewModel(location: restaurant.location))
+                            .frame(minWidth: 0, maxWidth: .infinity)
+                            .frame(height: 200)
+                            .cornerRadius(20)
+                            .padding()
                     }
                     .font(.system(.headline, design: .rounded))
                     .foregroundColor(.white)
