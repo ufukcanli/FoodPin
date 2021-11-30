@@ -8,52 +8,74 @@
 import SwiftUI
 
 struct RestaurantDetailView: View {
-    @Environment(\.presentationMode) var presentationMode
     var restaurant: Restaurant
     
     var body: some View {
-        ZStack(alignment: .top) {
-            Image("restaurant")
-                .resizable()
-                .scaledToFill()
-                .frame(minWidth: 0, maxWidth: .infinity)
-                .ignoresSafeArea()
-            
-            Color.black
-                .frame(height: 100)
-                .opacity(0.8)
-                .cornerRadius(20)
-                .padding()
-                .overlay(
-                    VStack(spacing: 5) {
-                        Text(restaurant.name)
-                        Text(restaurant.type)
-                        Text(restaurant.location)
-                        
-                        MapView(viewModel: MapViewModel(location: restaurant.location))
-                            .frame(minWidth: 0, maxWidth: .infinity)
-                            .frame(height: 200)
-                            .cornerRadius(20)
+        ScrollView {
+            VStack(alignment: .leading) {
+                Image("restaurant")
+                    .resizable()
+                    .scaledToFit()
+                    .overlay(
+                        VStack(alignment: .leading) {
+                            HStack(alignment: .top) {
+                                Spacer()
+                                
+                                Image(systemName: restaurant.isFavorite ? "heart.fill": "heart")
+                                    .font(.system(size: 30))
+                                    .foregroundColor(restaurant.isFavorite ? .yellow : .white)
+                                    .padding()
+                            }
+                            
+                            Spacer()
+                            
+                            VStack(alignment: .leading, spacing: 5) {
+                                Text(restaurant.name)
+                                    .font(.custom("Nunito-Regular", size: 35, relativeTo: .largeTitle))
+                                    .bold()
+                                
+                                Text(restaurant.type)
+                                    .font(.system(.headline, design: .rounded))
+                                    .padding(.all, 5)
+                                    .background(Color.black)
+                            }
+                            .foregroundColor(.white)
                             .padding()
+                        }
+                    )
+                                
+                //                Text(restaurant.description)
+                //                    .padding()
+                
+                HStack(alignment: .top) {
+                    VStack(alignment: .leading) {
+                        Text("ADDRESS")
+                            .font(.system(.headline, design: .rounded))
+                        
+                        Text(restaurant.location)
                     }
-                    .font(.system(.headline, design: .rounded))
-                    .foregroundColor(.white)
-                )
-        }
-        .navigationBarBackButtonHidden(true)
-        .toolbar {
-            ToolbarItem(placement: .navigationBarLeading) {
-                Button {
-                    presentationMode.wrappedValue.dismiss()
-                } label: {
-                    HStack {
-                        Image(systemName: "chevron.left")
-                        Text(restaurant.name)
+                    .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+                    
+                    VStack(alignment: .leading) {
+                        Text("PHONE")
+                            .font(.system(.headline, design: .rounded))
+                        
+                        //                        Text(restaurant.phone)
                     }
-                    .foregroundColor(.white)
+                    .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+                }
+                .padding(.horizontal)
+                
+                NavigationLink(destination: MapView(viewModel: MapViewModel(location: restaurant.location))) {
+                    MapView(viewModel: MapViewModel(location: restaurant.location))
+                        .frame(minWidth: 0, maxWidth: .infinity)
+                        .frame(height: 200)
+                        .cornerRadius(20)
+                        .padding()
                 }
             }
         }
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
