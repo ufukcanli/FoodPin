@@ -27,13 +27,21 @@ struct RestaurantListView: View {
                         message: nil,
                         buttons: [
                             .default(Text("Reserve a table")) {
-                                
+                                viewModel.showError.toggle()
                             },
                             .default(Text("Mark as favorite")) {
                                 
                             },
                             .cancel()
                         ]
+                    )
+                }
+                .alert(isPresented: $viewModel.showError) {
+                    Alert(
+                        title: Text("Not yet available"),
+                        message: Text("Sorry, this feature is not available yet. Please try again later."),
+                        primaryButton: .default(Text("OK")),
+                        secondaryButton: .cancel()
                     )
                 }
             }
