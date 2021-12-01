@@ -8,12 +8,24 @@
 import SwiftUI
 
 struct NewRestaurantView: View {
-    @State private var restaurantName = ""
+    @StateObject private var viewModel = NewRestaurantViewModel()
     
     var body: some View {
         NavigationView {
             ScrollView {
                 VStack {
+                    Image(uiImage: viewModel.restaurantImage)
+                        .resizable()
+                        .scaledToFill()
+                        .frame(minWidth: 0, maxWidth: .infinity)
+                        .frame(height: 200)
+                        .background(Color(.systemGray6))
+                        .clipShape(RoundedRectangle(cornerRadius: 20.0))
+                        .padding(.bottom)
+                        .onTapGesture {
+                            viewModel.showPhotoOptions.toggle()
+                        }
+                    
                     FormTextField(
                         label: "NAME",
                         placeholder: "Fill in the restaurant name",
@@ -47,6 +59,37 @@ struct NewRestaurantView: View {
                 .padding()
             }
             .navigationTitle("New Restaurant")
+        }
+        .actionSheet(isPresented: $viewModel.showPhotoOptions) {
+            ActionSheet(
+                title: Text("Choose your photo source"),
+                message: nil,
+                buttons: [
+                    .default(Text("Camera")) {
+                        viewModel.photoSource = .camera
+                    },
+                    .default(Text("Photo Library")) {
+                        viewModel.photoSource = .photoLibrary
+                    },
+                    .cancel()
+                ]
+            )
+        }
+        .fullScreenCover(item: $viewModel.photoSource) { source in
+            switch source {
+            case .photoLibrary:
+                ImagePicker(
+                    sourceType: .photoLibrary,
+                    selectedImage: $viewModel.restaurantImage
+                )
+                .ignoresSafeArea()
+            case .camera:
+                ImagePicker(
+                    sourceType: .camera,
+                    selectedImage: $viewModel.restaurantImage
+                )
+                .ignoresSafeArea()
+            }
         }
     }
 }
