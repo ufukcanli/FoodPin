@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct NewRestaurantView: View {
+    @Environment(\.presentationMode) private var presentationMode
     @StateObject private var viewModel = NewRestaurantViewModel()
     
     var body: some View {
@@ -59,7 +60,23 @@ struct NewRestaurantView: View {
                 .padding()
             }
             .navigationTitle("New Restaurant")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button {
+                        presentationMode.wrappedValue.dismiss()
+                    } label: {
+                        Image(systemName: "xmark")
+                    }
+                }
+                
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Text("Save")
+                        .font(.headline)
+                        .foregroundColor(Color("NavigationBarTitle"))
+                }
+            }
         }
+        .accentColor(.primary)
         .actionSheet(isPresented: $viewModel.showPhotoOptions) {
             ActionSheet(
                 title: Text("Choose your photo source"),

@@ -94,6 +94,17 @@ struct RestaurantListView: View {
                 }
             }
             .navigationTitle("FoodPin")
+            .toolbar {
+                Button {
+                    viewModel.showNewRestaurant.toggle()
+                } label: {
+                    Image(systemName: "plus")
+                }
+            }
+        }
+        .accentColor(.primary)
+        .sheet(isPresented: $viewModel.showNewRestaurant) {
+            NewRestaurantView()
         }
     }
 }
