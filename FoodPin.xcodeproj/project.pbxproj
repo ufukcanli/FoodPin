@@ -24,6 +24,9 @@
 		D29906292757AACD00F76E46 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29906282757AACD00F76E46 /* AboutView.swift */; };
 		D299062B2757ACD200F76E46 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D299062A2757ACD200F76E46 /* WebView.swift */; };
 		D299062D2757B00100F76E46 /* SafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D299062C2757B00100F76E46 /* SafariView.swift */; };
+		D29906312757B34300F76E46 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D29906302757B34200F76E46 /* CloudKit.framework */; };
+		D29906342757BF4500F76E46 /* CloudKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29906332757BF4500F76E46 /* CloudKitManager.swift */; };
+		D29906372757C34E00F76E46 /* DiscoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29906362757C34E00F76E46 /* DiscoverView.swift */; };
 		D2B719D8275607150069A1AE /* FoodPinApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B719D7275607150069A1AE /* FoodPinApp.swift */; };
 		D2B719DA275607150069A1AE /* RestaurantListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B719D9275607150069A1AE /* RestaurantListView.swift */; };
 		D2B719DC275607190069A1AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2B719DB275607190069A1AE /* Assets.xcassets */; };
@@ -48,6 +51,10 @@
 		D29906282757AACD00F76E46 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		D299062A2757ACD200F76E46 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		D299062C2757B00100F76E46 /* SafariView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariView.swift; sourceTree = "<group>"; };
+		D299062E2757B33800F76E46 /* FoodPin.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FoodPin.entitlements; sourceTree = "<group>"; };
+		D29906302757B34200F76E46 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		D29906332757BF4500F76E46 /* CloudKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitManager.swift; sourceTree = "<group>"; };
+		D29906362757C34E00F76E46 /* DiscoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverView.swift; sourceTree = "<group>"; };
 		D2B719D4275607150069A1AE /* FoodPin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodPin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2B719D7275607150069A1AE /* FoodPinApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodPinApp.swift; sourceTree = "<group>"; };
 		D2B719D9275607150069A1AE /* RestaurantListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantListView.swift; sourceTree = "<group>"; };
@@ -61,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D29906312757B34300F76E46 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,6 +99,7 @@
 		D2886806275642F300A94124 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				D29906322757BF2A00F76E46 /* Managers */,
 				D28868072756430D00A94124 /* Extensions */,
 			);
 			path = Utilities;
@@ -150,11 +159,36 @@
 			path = About;
 			sourceTree = "<group>";
 		};
+		D299062F2757B34200F76E46 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D29906302757B34200F76E46 /* CloudKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D29906322757BF2A00F76E46 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				D29906332757BF4500F76E46 /* CloudKitManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		D29906352757C1DF00F76E46 /* Discover */ = {
+			isa = PBXGroup;
+			children = (
+				D29906362757C34E00F76E46 /* DiscoverView.swift */,
+			);
+			path = Discover;
+			sourceTree = "<group>";
+		};
 		D2B719CB275607150069A1AE = {
 			isa = PBXGroup;
 			children = (
 				D2B719D6275607150069A1AE /* FoodPin */,
 				D2B719D5275607150069A1AE /* Products */,
+				D299062F2757B34200F76E46 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -169,8 +203,10 @@
 		D2B719D6275607150069A1AE /* FoodPin */ = {
 			isa = PBXGroup;
 			children = (
+				D299062E2757B33800F76E46 /* FoodPin.entitlements */,
 				D2B719D7275607150069A1AE /* FoodPinApp.swift */,
 				D29906272757AABA00F76E46 /* About */,
+				D29906352757C1DF00F76E46 /* Discover */,
 				D299062027577B9400F76E46 /* Onboarding */,
 				D28867FC27560EE500A94124 /* RestaurantList */,
 				D288680A2756565A00A94124 /* RestaurantDetail */,
@@ -272,9 +308,11 @@
 				D28868052756348D00A94124 /* RestaurantDetailView.swift in Sources */,
 				D28867FE27560F0B00A94124 /* RestaurantListViewModel.swift in Sources */,
 				D288680327562FE800A94124 /* ActivityView.swift in Sources */,
+				D29906372757C34E00F76E46 /* DiscoverView.swift in Sources */,
 				D2990615275761C000F76E46 /* NewRestaurantView.swift in Sources */,
 				D299062D2757B00100F76E46 /* SafariView.swift in Sources */,
 				D299062427577BE900F76E46 /* OnboardingViewModel.swift in Sources */,
+				D29906342757BF4500F76E46 /* CloudKitManager.swift in Sources */,
 				D2B719D8275607150069A1AE /* FoodPinApp.swift in Sources */,
 				D2990617275767FD00F76E46 /* NewRestaurantViewModel.swift in Sources */,
 				D299062B2757ACD200F76E46 /* WebView.swift in Sources */,
@@ -407,6 +445,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = FoodPin/FoodPin.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"FoodPin/Preview Content\"";
 				DEVELOPMENT_TEAM = 7995LB4979;
@@ -429,6 +468,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = FoodPin/FoodPin.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"FoodPin/Preview Content\"";
 				DEVELOPMENT_TEAM = 7995LB4979;
