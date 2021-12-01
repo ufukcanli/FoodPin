@@ -62,7 +62,8 @@ struct AboutView: View {
         }
         .sheet(item: $link) { item in
             if let url = URL(string: item.rawValue) {
-                WebView(url: url)
+//                WebView(url: url)
+                SafariView(url: url)
             }
         }
     }
