@@ -38,7 +38,7 @@ struct OnboardingView: View {
                     if viewModel.shouldNextPage {
                         viewModel.currentPageID += 1
                     } else {
-                        hasViewedWalkthrough = true
+                        hasViewedWalkthrough = false // set to true after development
                         presentationMode.wrappedValue.dismiss()
                     }
                 } label: {
@@ -53,7 +53,7 @@ struct OnboardingView: View {
                 
                 if viewModel.shouldNextPage {
                     Button {
-                        hasViewedWalkthrough = true
+                        hasViewedWalkthrough = false // set to true after development
                         presentationMode.wrappedValue.dismiss()
                     } label: {
                         Text("Skip")
