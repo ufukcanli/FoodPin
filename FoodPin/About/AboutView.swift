@@ -7,15 +7,19 @@
 
 import SwiftUI
 
-enum WebLink: String {
+enum WebLink: String, Identifiable {
     case rateUs = "https://www.apple.com/ios/app-store"
     case feedback = "https://ufukcanli.com"
     case twitter = "https://twitter.com/"
     case facebook = "https://facebook.com/"
     case instagram = "https://instagram.com/ufukcanli"
+    
+    var id: UUID { UUID() }
 }
 
 struct AboutView: View {
+    @State private var link: WebLink?
+    
     var body: some View {
         NavigationView {
             List {
@@ -28,18 +32,38 @@ struct AboutView: View {
                         Label("Rate us on App Store", image: "store")
                             .foregroundColor(.primary)
                     }
+                    
                     Label("Tell us your feedback", image: "chat")
+                        .onTapGesture {
+                            link = .feedback
+                        }
                 }
                 
                 Section {
                     Label("Twitter", image: "twitter")
+                        .onTapGesture {
+                            link = .twitter
+                        }
+                    
                     Label("Facebook", image: "facebook")
+                        .onTapGesture {
+                            link = .facebook
+                        }
+                    
                     Label("Instagram", image: "instagram")
+                        .onTapGesture {
+                            link = .instagram
+                        } 
                 }
             }
             .listStyle(GroupedListStyle())
             .navigationTitle("About")
             .navigationBarTitleDisplayMode(.automatic)
+        }
+        .sheet(item: $link) { item in
+            if let url = URL(string: item.rawValue) {
+                WebView(url: url)
+            }
         }
     }
 }
