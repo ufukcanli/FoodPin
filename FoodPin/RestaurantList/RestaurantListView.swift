@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct RestaurantListView: View {
+    @AppStorage("hasViewedWalkthrough") private var hasViewedWalkthrough = false
     @StateObject private var viewModel = RestaurantListViewModel()
     
     var body: some View {
@@ -105,6 +106,12 @@ struct RestaurantListView: View {
         .accentColor(.primary)
         .sheet(isPresented: $viewModel.showNewRestaurant) {
             NewRestaurantView()
+        }
+        .sheet(isPresented: $viewModel.showWalkthrough) {
+            OnboardingView()
+        }
+        .onAppear {
+            viewModel.showWalkthrough = hasViewedWalkthrough ? false : true
         }
     }
 }

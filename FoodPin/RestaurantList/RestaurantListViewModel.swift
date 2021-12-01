@@ -37,6 +37,7 @@ final class RestaurantListViewModel: ObservableObject {
     @Published var showError = false
     @Published var showShare = false
     @Published var showNewRestaurant = false
+    @Published var showWalkthrough = true
     
     func markFavorite() {
         restaurants = restaurants.map { restaurant in
