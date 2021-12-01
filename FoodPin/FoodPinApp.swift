@@ -53,7 +53,7 @@ struct MainView: View {
                 }
                 .tag(1)
             
-            Text("About")
+            AboutView()
                 .tabItem {
                     Label("About", systemImage: "square.stack")
                 }
