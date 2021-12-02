@@ -12,6 +12,8 @@ struct DiscoverView: View {
     
     var body: some View {
         List(manager.restaurants, id: \.recordID) { restaurant in
+            // TODO: Add async image iOS15
+            // TODO: Add pull to refresh iOS15
             Text(restaurant.object(forKey: "name") as! String)
         }
         .onAppear {

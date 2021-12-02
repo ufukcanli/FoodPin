@@ -113,6 +113,14 @@ struct RestaurantListView: View {
         .onAppear {
             viewModel.showWalkthrough = hasViewedWalkthrough ? false : true
         }
+        .onOpenURL { url in
+            switch url.path {
+            case "/NewRestaurant":
+                viewModel.showNewRestaurant = true
+            default:
+                return
+            }
+        }
     }
 }
 
