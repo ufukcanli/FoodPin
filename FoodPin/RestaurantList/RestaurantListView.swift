@@ -112,6 +112,7 @@ struct RestaurantListView: View {
         }
         .onAppear {
             viewModel.showWalkthrough = hasViewedWalkthrough ? false : true
+            viewModel.prepareNotification()
         }
         .onOpenURL { url in
             switch url.path {
